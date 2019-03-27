@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	
+	string filename,fortxt,fordoc,fordocx;
+	char ch;
+	int c,w;
+	cout<< "Please enter a file name." <<endl;
+	
+	
+	getline( cin, filename );
+	fortxt=filename+".txt";
+	fordoc=filename+".doc";
+	fordocx=filename+".docx";
+		
+	fstream file( fortxt.c_str() );
+	if(!file)
+	{
+		fstream file( fordoc.c_str() );
+		if(!file)
+		{
+			fstream file( fordocx.c_str() );
+			if(!file)
+			{
+				cout<<"This file doesn't exist!";
+			}
+			else
+			{
+				cout<<"file type docx!";
+			}
+		}
+		else
+		{
+			cout<<"file type doc!";
+		}
+	}
+	else
+	{
+		cout<<"file type txt!";
+	}
+	
+	
+	
+	return 0;
+}
