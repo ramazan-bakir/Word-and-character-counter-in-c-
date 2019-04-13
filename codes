@@ -49,6 +49,7 @@ int main() {
 					}
 				cout<<"Number of char="<<c<<endl;
 				cout<<"Number of words="<<w<<endl;
+				c=0;
 				w=0;
 				//cout<<"file type docx!";
 				}
@@ -74,6 +75,7 @@ int main() {
 					}
 				cout<<"Number of char="<<c<<endl;
 				cout<<"Number of words="<<w<<endl;
+				c=0;
 				w=0;
 				//cout<<"file type doc!";
 				} 
@@ -100,6 +102,7 @@ int main() {
 						}
 				cout<<"Number of char="<<c<<endl;
 				cout<<"Number of words="<<w<<endl;
+				c=0;
 				w=0;
 				//cout<<"file type txt!";
 				}
