@@ -6,9 +6,10 @@ using namespace std;
 
 int main() {
 	
-	string filename,fortxt,fordoc,fordocx;
+	string filename,fortxt,fordoc,fordocx,line;
 	char ch;
-	int c,w;
+	int c=0;
+	int w=0;
 	cout<< "Please enter a file name." <<endl;
 	
 	
@@ -18,29 +19,90 @@ int main() {
 	fordocx=filename+".docx";
 		
 	fstream file( fortxt.c_str() );
-	if(!file)
+	if( !file )
 	{
 		fstream file( fordoc.c_str() );
-		if(!file)
+		if( !file ) 
 		{
 			fstream file( fordocx.c_str() );
-			if(!file)
+			if( !file )
 			{
 				cout<<"This file doesn't exist!";
 			}
 			else
 			{
-				cout<<"file type docx!";
+				if( file.is_open() )
+				{
+					while ( getline ( file, line ))
+					{
+						c+=line.length();
+						for( int i=0; i<line.length(); i++ )
+						{
+							if( line[i]==' ' && line[i]=='.' )
+							c--;
+						}
+						for( int i=0; i<line.length(); i++ )
+						{
+							if( line[i]==' ')
+							w++;
+						}
+					}
+				cout<<"Number of char="<<c<<endl;
+				cout<<"Number of words="<<w<<endl;
+				w=0;
+				//cout<<"file type docx!";
+				}
 			}
 		}
 		else
 		{
-			cout<<"file type doc!";
+			if( file.is_open() )
+				{
+					while ( getline ( file, line ))
+					{
+						c+=line.length();
+						for( int i=0; i<line.length(); i++ )
+						{
+							if( line[i]==' ' && line[i]=='.' )
+							c--;
+						}
+						for( int i=0; i<line.length(); i++ )
+						{
+							if( line[i]==' ')
+							w++;
+						}
+					}
+				cout<<"Number of char="<<c<<endl;
+				cout<<"Number of words="<<w<<endl;
+				w=0;
+				//cout<<"file type doc!";
+				} 
 		}
 	}
 	else
 	{
-		cout<<"file type txt!";
+		if( file.is_open() )
+				{
+					while ( getline ( file, line ))
+					{
+						c+=line.length();
+					}
+						for( int i=0; i<line.length(); i++ )
+						{
+							
+							if( line[i]==' ' || line[i]=='.' )
+							c--;
+						}
+						for( int i=0; i<line.length(); i++ )
+						{
+							if( line[i]==' ')
+							w++;
+						}
+				cout<<"Number of char="<<c<<endl;
+				cout<<"Number of words="<<w<<endl;
+				w=0;
+				//cout<<"file type txt!";
+				}
 	}
 	
 	
