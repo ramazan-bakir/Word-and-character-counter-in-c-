@@ -7,7 +7,6 @@ using namespace std;
 int main() {
 	
 	string filename,fortxt,fordoc,fordocx,line;
-	char ch;
 	int c=0;
 	int w=0;
 	cout<< "Please enter a file name." <<endl;
@@ -31,81 +30,35 @@ int main() {
 			}
 			else
 			{
-				if( file.is_open() )
+				while ( file>>line )
 				{
-					while ( getline ( file, line ))
-					{
-						c+=line.length();
-						for( int i=0; i<line.length(); i++ )
-						{
-							if( line[i]==' ' && line[i]=='.' )
-							c--;
-						}
-						for( int i=0; i<line.length(); i++ )
-						{
-							if( line[i]==' ')
-							w++;
-						}
-					}
-				cout<<"Number of char="<<c<<endl;
-				cout<<"Number of words="<<w<<endl;
-				c=0;
-				w=0;
-				//cout<<"file type docx!";
+					c+=line.length();
+					w++;		
 				}
+				cout<<"Number of words="<<w<<endl;
+				cout<<"Number of characters="<<c<<endl;
 			}
 		}
 		else
 		{
-			if( file.is_open() )
-				{
-					while ( getline ( file, line ))
-					{
-						c+=line.length();
-						for( int i=0; i<line.length(); i++ )
-						{
-							if( line[i]==' ' && line[i]=='.' )
-							c--;
-						}
-						for( int i=0; i<line.length(); i++ )
-						{
-							if( line[i]==' ')
-							w++;
-						}
-					}
-				cout<<"Number of char="<<c<<endl;
-				cout<<"Number of words="<<w<<endl;
-				c=0;
-				w=0;
-				//cout<<"file type doc!";
-				} 
+			while ( file>>line )
+			{	
+				c+=line.length();
+				w++;		
+			}
+			cout<<"Number of words="<<w<<endl;
+			cout<<"Number of characters="<<c<<endl;
 		}
-	}
+	}			
 	else
 	{
-		if( file.is_open() )
-				{
-					while ( getline ( file, line ))
-					{
-						c+=line.length();
-					}
-						for( int i=0; i<line.length(); i++ )
-						{
-							
-							if( line[i]==' ' || line[i]=='.' )
-							c--;
-						}
-						for( int i=0; i<line.length(); i++ )
-						{
-							if( line[i]==' ')
-							w++;
-						}
-				cout<<"Number of char="<<c<<endl;
-				cout<<"Number of words="<<w<<endl;
-				c=0;
-				w=0;
-				//cout<<"file type txt!";
-				}
+		while ( file>>line )
+		{
+			c+=line.length();
+			w++;		
+		}
+		cout<<"Number of words="<<w<<endl;
+		cout<<"Number of characters="<<c<<endl;
 	}
 	
 	
